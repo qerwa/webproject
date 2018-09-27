@@ -1,4 +1,4 @@
-package ex_Bean;
+package exActionTag;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,5 +36,4 @@ public class studentDAO {
    }  
    return items; 
   }
- 
 }

@@ -1,25 +1,49 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*" %>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-</head>
-<body>
-<%
- Class.forName("oracle.jdbc.driver.OracleDriver");
- Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","201412400","201412400");
- 
- PreparedStatement sql = conn.prepareStatement("select * from student");
- ResultSet rs = sql.executeQuery();
- 
- while(rs.next()) {
-  String no = rs.getString("no");
-  String name = rs.getString("name"); %>
-  <%= no %>
-  <%= name %><br>
-  <% }
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
 
-  conn.close();
-%>
-</body>
+<%@ page import = "ex_Bean.studentVO" %> 
+
+<%@ page import = "ex_Bean.studentDAO" %> 
+
+<%@ page import = "java.util.*" %> 
+
+
+
+<% 
+ request.setCharacterEncoding("UTF-8"); 
+
+ studentDAO dao = new studentDAO(); 
+
+ List<studentVO> items = new ArrayList<studentVO>(); 
+
+ items = dao.selectStudent();
+%> 
+
+
+
+<html> 
+
+<head> 
+
+<title>셀렉트해보기</title> 
+
+</head> 
+
+<body> 
+
+<% 
+
+ for(int i=0; i<items.size(); i++) { 
+
+  studentVO item = (studentVO)items.get(i); 
+
+%> 
+
+  <%=item.getNo()%> 
+
+  <%=item.getName()%><BR/> 
+
+ <%}%> 
+
+</body> 
+
 </html>
