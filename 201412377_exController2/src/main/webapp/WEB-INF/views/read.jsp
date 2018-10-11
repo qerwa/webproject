@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>url</title>
+<title>Insert title here</title>
 </head>
 <body>
-urlB
-${msg}
+${studentVO.no}
+${studentVO.name}
 </body>
 </html>
