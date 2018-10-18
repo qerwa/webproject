@@ -13,8 +13,19 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
-	
- 	<dependencies>
+	<dependencies>
+	<!-- Spring JDBC -->
+ 	<dependency>
+ 		<groupId>org.springframework</groupId>
+		 <artifactId>spring-jdbc</artifactId>
+ 		<version>${org.springframework-version}</version>
+	</dependency>
+	<!-- Connection Pool -->
+	<dependency>
+ 		<groupId>commons-dbcp</groupId>
+		 <artifactId>commons-dbcp</artifactId>
+ 		<version>1.4</version>
+	</dependency>
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
