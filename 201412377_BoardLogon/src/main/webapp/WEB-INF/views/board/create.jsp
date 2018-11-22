@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div class="container">
-		<form role="form" method="post" action="/board/createPost">
+		<form role="form" method="post" action="/board/create">
 			<div class="form-group">
 				<label for="writer">작성자</label> <input type="text" name="writer"
 					size="20" value='${login.id}'>

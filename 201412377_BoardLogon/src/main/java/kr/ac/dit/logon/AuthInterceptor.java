@@ -1,11 +1,8 @@
 package kr.ac.dit.logon;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
 public class AuthInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
@@ -20,8 +17,6 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 				uri += "?" + query;
 			}
 			if (httpServletRequest.getMethod().equals("GET")) {
-				httpSession.setAttribute("saveDirect", uri + query);
-			} else {
 				httpSession.setAttribute("saveDirect", uri);
 			}
 			httpServletResponse.sendRedirect("/member/login");
