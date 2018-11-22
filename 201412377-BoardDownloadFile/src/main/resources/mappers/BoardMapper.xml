@@ -8,22 +8,27 @@
 		order by no desc, createDate desc
 		]]>
 	</select>
-	<insert id="insert">
-		insert into board (no, writer, title, content,
-		createDate) values (board_seq.nextval, #{writer}, #{title},
-		#{content}, SYSDATE)
-	</insert>
+	<select id="selectAttachFile" resultType="string">
+		select file_name from attach_file where no = #{no}
+	</select>
 	<insert id="insertAttachFile">
 		insert into attach_file (file_name, no) values
 		(#{fileName},
 		board_seq.currval)
 	</insert>
+	<insert id="insert">
+		insert into board (no, writer, title, content,
+		createDate) values (board_seq.nextval, #{writer}, #{title},
+		#{content}, SYSDATE)
+	</insert>
+	<insert id="insertFile">
+		insert into upload_file (file_id, file_name,
+		file_data) values (#{fileId},
+		#{fileName}, #{fileData})
+	</insert>
 	<select id="select" resultType="kr.ac.dit.domain.BoardVO">
 		select * from board where no =
 		#{no}
-	</select>
-	<select id="selectAttachFile" resultType="string">
-		select file_name from attach_file where no = #{no}
 	</select>
 	<update id="update">
 		update board set title = #{title}, content =
@@ -32,4 +37,5 @@
 	<delete id="delete">
 		delete from board where no = #{no}
 	</delete>
+
 </mapper>
